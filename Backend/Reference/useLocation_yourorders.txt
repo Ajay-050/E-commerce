@@ -1,0 +1,76 @@
+This is for Yourorders section. After successful payment the items should be displayed in cart section.
+
+For this to happen we need to know what products the user has shopped and we do this by encoding the items 
+which are passed to /payment endpoint in the success URl using encodeURIComponent() method. we can extract these items
+also known as URL parameters in the Yourorders.jsx file by decoding it using decodeURIComponent and also with the help of
+useLocation() hook.
+
+                            app.post("/payment",async (req,res)=>{
+
+                                try {
+
+                                    const items = JSON.stringify(req.body.items);
+                                    const encodedItems = encodeURIComponent(items);
+
+                                    const session = await stripe.checkout.sessions.create({
+                                        payment_method_types:["card"],
+                                        mode:"payment",
+                                        line_items:req.body.items.map(item=>{
+                                            return {
+                                                price_data:{
+                                                    currency:"INR",
+                                                    product_data:{
+                                                        name:item.name,
+                                                    },
+                                                    unit_amount:(item.price)*100 
+                                                },
+                                                quantity:item.quantity
+                                            }
+                                        }),
+                                        success_url:`http://localhost:3000/success?items=${encodedItems}`,
+                                        cancel_url:"http://localhost:3000/cancel"
+                                    }) 
+                                console.log("Session URL:", session.url); 
+                                res.json({url:session.url})
+
+                                } catch (error) {
+                                    res.status(500).json({error:error.message})
+                                }
+                            })
+
+encodeURIComponent :
+
+1.  encodeURIComponent is used to encode a URI component, which means it replaces each instance of certain characters 
+    by one or more escape sequences representing the UTF-8 encoding of the character. This function encodes all characters 
+    except:
+
+    A-Z a-z 0-9 - _ . ! ~ * ' ( )
+
+2.  Characters such as ;,/?:@&=+$# are replaced with their respective UTF-8 encoded form.Characters such as ;,/?:@&=+$# are replaced with their respective UTF-8 encoded form.
+
+
+
+
+useLocation :
+
+1.  The useLocation hook from the react-router-dom library is used to access the current location object, which 
+    represents the current URL in the browser. This hook is particularly useful when you need to read the URL's 
+    query parameters, pathname, hash, or state.
+
+2.  // const location = useLocation();
+
+    When you call useLocation, it returns a location object that contains information about the current URL. 
+
+3.  // const params = new URLSearchParams(location.search);
+
+    The location object has a search property, which is a string representing the query string part of the URL, 
+    including the leading ?. You can use the URLSearchParams API to parse this query string and extract the parameters.
+
+4.  // const items = params.get('items');
+
+    You can use the get method of URLSearchParams to retrieve the value of a specific query parameter by its name.
+
+5.  // const cartItems = items ? JSON.parse(decodeURIComponent(items)) : [];
+
+    If the parameter value is JSON-encoded, you'll need to decode it using decodeURIComponent and then 
+    parse it using JSON.parse.

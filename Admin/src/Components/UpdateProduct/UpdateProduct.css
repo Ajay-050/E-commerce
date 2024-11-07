@@ -1,0 +1,82 @@
+#proId{
+    height: 40px;
+    width: 80px;
+    position: absolute;
+    top: 150px;
+    left: 300px;
+    font-size: 18px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+.prod-details{
+    margin-left: 600px;
+}
+
+.pName{
+    display: flex;
+    gap: 10px;
+    font-size: 24px;
+    flex-direction: column;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bolder;
+}
+.pName input{
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.pImage{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 20px;
+}
+#thumbnail-img{
+    height: 300px;
+    width: 300px;
+}
+.pPrice{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 20px;
+    font-size: 24px;
+    flex-direction: column;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bolder;
+}
+.pPrice input{
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.submit button{
+    margin-top: 20px;
+    width: 160px;
+    height: 50px;
+    border-radius: 6px;
+    background: #6079ff;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+}
+@media(max-width:800px){
+    #proId{
+        top: 220px;
+        left:10px
+    }
+    .prod-details{
+        margin-left: 10px;
+        margin-top: 100px
+    }
+}

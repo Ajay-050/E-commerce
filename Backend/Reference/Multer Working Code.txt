@@ -1,0 +1,28 @@
+This is for addproduct API.
+
+When someone submits form data to the /upload endpoint, here's what happens step by step:
+
+
+1. Client Submits Form Data
+
+The client submits a form with multipart/form-data encoding. 
+This form includes a file input with the name 'product'. The HTTP POST request is sent to the /upload endpoint.
+
+2. Express Middleware Handles the Request:
+
+The request hits the /upload endpoint, which is handled by the route defined in your Express application.
+
+3. multer Middleware Processes the Upload
+
+The upload.single('product') middleware processes the file upload. Here's what happens internally:
+
+. multer reads the form data, including the file.
+. multer uses the configured diskStorage storage engine to determine where to save the uploaded file and what to name it.
+. The destination function or value (in this case, ./upload/images) determines the directory where the file will be stored.
+. The filename function generates a unique filename based on the field name, current timestamp, and original file extension.
+. multer saves the file to the specified directory with the generated filename.
+. Once multer has processed and saved the file, this route handler is called,
+. res.json({
+        success: 1,
+        imageUrl: `http://localhost:${port}/images/${req.file.filename}`
+    });

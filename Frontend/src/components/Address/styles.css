@@ -1,0 +1,78 @@
+.address-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.address-container h1{
+    margin-top: 30px;
+    font-size: 40px;
+}
+.address{
+    margin-bottom: 60px;
+}
+#firstname{
+    margin-right: 20px;
+    width: 250px;
+    height: 40px;
+    font-size: 18px;
+    outline: none;
+    font-family: 'Times New Roman', Times, serif;
+}
+#lastname{
+    width: 250px;
+    height: 40px;
+    font-size: 18px;
+    outline: none;
+    font-family: 'Times New Roman', Times, serif;
+}
+.address textarea{
+    width: 550px;
+    margin-top: 20px;
+    height: 80px;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.area{
+    margin-top: 20px;
+}
+#city{
+    margin-right: 20px;
+    height: 40px;
+    width: 250px;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+}
+#state{
+    height: 40px;
+    width: 250px;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.zip{
+    margin-top: 20px;
+}
+#postal{
+    margin-right: 20px;
+    height: 40px;
+    width: 250px;
+    font-size: 16px;
+}
+#ziip{
+    height: 40px;
+    width: 250px;
+    font-size: 16px;
+}
+.payment button{
+    margin-top: 20px;
+    width: 262px;
+    height: 58px;
+    outline: none;
+    border: none;
+    background: #ff5a5a;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
